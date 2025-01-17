@@ -134,6 +134,9 @@ const TimerContainer: React.FC<TimerSettingProps> = (props) => {
             
             
         } else if (props.autoPomodoro && stateStatus == 'rest') {
+            setTimeout(() => {
+                setCountdownStarted(true)
+            }, 1);   
         }
           
     }

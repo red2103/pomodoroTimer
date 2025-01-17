@@ -1,33 +1,6 @@
 import React, {useDeferredValue, useState} from "react";
 import TimerContainer from "./TimerContainer";
 import RangeSlider from "./RangeSlider"
-import OnOffButton from "./OnOffButton";
-
-// interface buttonProps {
-//     on: string;
-//     off: string; 
-//     description: string;
-// }
-
-// const OnOffButton: React.FC<buttonProps>  = (props) =>{
-//     const [state, changeState] = useState(props.on);
-    
-//     function change() {
-//         if (state == props.on) {
-//             changeState(props.off)
-//         } else {
-//             changeState(props.on)
-//         }
-//     }
-    
-//     return (
-//         <div>
-//             <button onClick={change}>{state}</button> {props.description}
-//         </div>
-
-//     );
-// }
-
 
 const timeDefault: {
     defaultRangeValuePomodoro: number;
@@ -39,16 +12,36 @@ const timeDefault: {
     defaultRangeValueLongRest: 15,
     };
 
+    // function OnOffButton() {
+    //     const [state, changeState] = useState('on');
+      
+    //     function change() {
+    //       if (state == "on") {
+    //         changeState('off')
+    //       } else { 
+    //         changeState('on')
+    //       }
+    //     }
+      
+    //     return (
+    //       <button onClick={change}>
+    //         {state} 
+    //       </button>
+    //     );
+    //   }
+
+
+      
 
 const TimerSetting = () => {
-    const [Pomodoro, setPomodoro] = useState(timeDefault.defaultRangeValuePomodoro);
-    const [Rest, setRest] = useState(timeDefault.defaultRangeValueRest)    
+    const [pomodoro, setPomodoro] = useState(timeDefault.defaultRangeValuePomodoro);
+    const [rest, setRest] = useState(timeDefault.defaultRangeValueRest)    
     const [longRest, setLongRest] = useState(timeDefault.defaultRangeValueLongRest)
     const [rangeValuePomodoro, setRangeValuePomodoro] = useState(timeDefault.defaultRangeValuePomodoro)
     const [rangeValueRest, setRangeValueRest] = useState(timeDefault.defaultRangeValueRest)
     const [rangeValuelongRest, setRangeValuelongRest] = useState(timeDefault.defaultRangeValueLongRest)
-    const [autoPomodoroActive, changeStateAutoPomodoro ] = useState(false)
-    const [autoRestActive, changeStateAutoRest ] = useState(true) 
+    const [stateAutoPomodoroActive, setAutoPomodoro ] = useState(false)
+    const [stateAutoRestActive, setAutoRest ] = useState(true) 
 
 
     const runSettings = () => {
@@ -57,13 +50,69 @@ const TimerSetting = () => {
         setLongRest(rangeValuelongRest)
     }
 
+    const changeStateAutoPomodoro = () => {
+        if (stateAutoPomodoroActive) {
+            setAutoPomodoro(false)
+        } else {
+            setAutoPomodoro(true)
+        }
+    }
 
 
+    const changeStateAutoRest = () => {
+        if (stateAutoRestActive) {
+            setAutoRest(false)
+        } else {
+            setAutoRest(true)
+        }
+    }
+
+    const buttonView = (state: boolean) => {
+        if (state) {
+            return 'on'
+        } else {
+            return 'off'
+        }
+    }
+
+    // const changeState = (func: (s: boolean) => void, state: boolean): void => {
+    //     if (state) {
+    //         func(false);
+    //     } else {
+    //         func(true)
+    //     }
+    // };
+
+    // const func_test = (state: boolean) => {
+    //     if (state) {
+    //         console.log(autoRestActive)
+
+    //         changeStateAutoRest(false);
+    //         console.log(autoRestActive)
+    //     } else {
+    //         console.log(autoRestActive)
+
+    //         changeStateAutoRest(true)
+    //         console.log(autoRestActive)
+
+    //     }
+    // } 
+
+    
+
+    // func_test(true)
+
+    // function change() {
+    //     if (state == props.on) {
+    //         changeState(props.off)
+    //     } else {
+    //         changeState(props.on)
+    //     }
+    // }
 
     return (
         <div>
-            {/* <TimerContainer pomodoro={Pomodoro * 60} rest={Rest * 60} longRest={longRest * 60} autoActive={false} autoRest={false}/> */}
-            <TimerContainer pomodoro={1} rest={2} longRest={3} autoPomodoro={autoPomodoroActive} autoRest={autoRestActive} />
+            <TimerContainer pomodoro={pomodoro * 60} rest={rest * 60} longRest={longRest * 60} autoPomodoro={stateAutoPomodoroActive} autoRest={stateAutoRestActive} />
 
 
         <p>Audio settings:</p>
@@ -107,19 +156,9 @@ const TimerSetting = () => {
             /> 
             </div>
             <div>
-                <OnOffButton 
-                on={'on'} 
-                off={'off'} 
-                description={'auto pomodoro'} 
-                state={autoPomodoroActive}
-                onChange={(e) => {
-                    changeStateAutoPomodoro(state)
-                }} 
-                />
-                
-                {/* <OnOffButton on={'on'} off={'off'} description={'auto rest'}/> */}
-
-
+                <button onClick={changeStateAutoPomodoro}>{buttonView(stateAutoPomodoroActive)}</button> pomodoro
+                <br />
+                <button onClick={changeStateAutoRest}>{buttonView(stateAutoRestActive)}</button> rest
             </div>
             <button onClick={runSettings}>OK</button>
         </div>
