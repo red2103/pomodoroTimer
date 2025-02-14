@@ -1,10 +1,9 @@
-import styleContainer from './Container'
 
 const OptionButtonUI = {
-    // ...styleContainer,
-    fontSize: '18px',
+    fontSize: '22px',
     border: '0',
     cursor: 'pointer',
+    padding: '10px 0px 0px 0px',
 }
 
 export default OptionButtonUI

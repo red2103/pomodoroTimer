@@ -40,11 +40,12 @@ const Option: React.FC<OptionProps> = ({ setting, viewOption, view, setTime }) =
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
+                    
                 }}>                    
                     <p style={{
                         display: 'flex',
                         fontSize: '26px',
-
+                        
                     }} >Option</p>
 
                     <button onClick={() => viewOption(false)} style={{
