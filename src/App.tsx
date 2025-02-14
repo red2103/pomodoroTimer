@@ -8,7 +8,6 @@ import RestartButton from './components/RestartButton.tsx'
 import Option from './components/Option.tsx'
 import Setting from './components/Setting'
 
-import './App.css'
 import Container from './components/UI/Container.tsx'
 import headerUI from './components/UI/HeaderUI.tsx'
 import ListStateButtonUI from './components/UI/ListStateButtonUI.tsx'
