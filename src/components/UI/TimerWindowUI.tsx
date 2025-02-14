@@ -1,7 +1,7 @@
-import styleContainer from "./ContainerUI"
+import Container from "./Container"
 
 const TimerWindowUI = {
-    ...styleContainer,
+    ...Container,
     justifyContent: 'center',
     fontSize: '10rem',
 } 

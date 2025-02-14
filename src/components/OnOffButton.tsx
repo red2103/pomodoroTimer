@@ -2,20 +2,17 @@ import React from 'react';
 
 import ButtonTimerUI from './UI/ButtonTimerUI';
 
-interface ButtonTimerProps {
+interface OnOffButtonProps {
   onClick: () => void;
-  state?: boolean;
+  state: boolean;
   text: string | string[]
 }
 
-const ButtonTimer: React.FC<ButtonTimerProps> = ({ onClick, state, text }) => {
+const OnOffButton: React.FC<OnOffButtonProps> = ({ onClick, state, text }) => {
 
   const textBotton = () => {
-    if (state != undefined) {
       return !state ? <>{text[0]}</> : <>{text[1]}</>
-    } else {
-      return text
-    }
+
   }
 
   return (
@@ -25,4 +22,4 @@ const ButtonTimer: React.FC<ButtonTimerProps> = ({ onClick, state, text }) => {
   );
 }
 
-export default ButtonTimer;
+export default OnOffButton;

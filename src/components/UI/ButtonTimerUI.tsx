@@ -6,6 +6,7 @@ const ButtonTimerUI = {
     margin: '2px 2px',
     height: '50px',
     fontSize: '1.25rem',
+    cursor: 'pointer',
 }
 
 export default ButtonTimerUI

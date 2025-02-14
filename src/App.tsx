@@ -1,16 +1,18 @@
 import { useState } from 'react'
 
 import TimerWindow from './components/TimerWindow'
-import ButtonTimer from './components/ButtonTimer'
+import ButtonTimer from './components/OnOffButton.tsx'
 import NextButton from './components/NextButton'
 import StateButton from './components/StateButton'
 import RestartButton from './components/RestartButton.tsx'
+import Option from './components/Option.tsx'
 import Setting from './components/Setting'
 
 import './App.css'
-import styleContainer from './components/UI/ContainerUI.tsx'
+import Container from './components/UI/Container.tsx'
 import headerUI from './components/UI/HeaderUI.tsx'
 import ListStateButtonUI from './components/UI/ListStateButtonUI.tsx'
+import OptionButtonUI from './components/UI/OptionButtonUI.tsx'
 
 
 const setting: Setting = {
@@ -40,6 +42,7 @@ const App: React.FC = () => {
   const [statePomodoro, setStatePomodoro] = useState(setting.State)
   const [stateTimer, runTimer] = useState(false)
   const [time, setTime] = useState(setting.TimerSetting.timeCycle['Pomodoro'])
+  const [view, viewOption] = useState(false)
 
   const getTime = (state: 'Pomodoro' | 'Short Break'| 'Long Break') => {
     setTime(setting.TimerSetting.timeCycle[state])
@@ -96,31 +99,33 @@ const App: React.FC = () => {
 
 
 
+
   return (
-    <>
+    <div style={{}}>
       <header style={headerUI}>
         <h1>Pomodoro timer</h1>
-        {/* <button onClick={() => console.log('option')} >option</button> */}
-        {/* <button onClick={() => console.log('login')} >login</button> */}
+        <button onClick={() => viewOption(true)} style={OptionButtonUI}>Option</button>
       </header>
 
-        <div style={ListStateButtonUI}>
-          <StateButton text='Pomodoro'  statePomodoro={statePomodoro} runTimer={runTimer} getTime={getTime}/>
-          <StateButton text='Short Break'  statePomodoro={statePomodoro} runTimer={runTimer} getTime={getTime}/>
-          <StateButton text='Long Break'  statePomodoro={statePomodoro} runTimer={runTimer} getTime={getTime}/>
-        </div>
-        
+      <Option setting={setting} viewOption={viewOption} view={view} setTime={setTime}></Option>
 
-        <TimerWindow stateTimer={stateTimer} runTimer={runTimer} next={next} time={time} setTime={setTime}/>
-        <div style={{...styleContainer, fontSize: '1.25rem',}}>Count cycle: {getCountCycle()}</div>
-        <div style={styleContainer}>
-          <ButtonTimer onClick={handleClick} state={stateTimer} text={['START', 'STOP']}/>
-          <NextButton state={time != setting.TimerSetting.timeCycle[statePomodoro]} next={next}/>
-        </div>
-        <RestartButton onClick={restart} state={time != setting.TimerSetting.timeCycle[statePomodoro]} text={'RESTART'}/>
+      <div style={ListStateButtonUI}>
+        <StateButton text='Pomodoro'  statePomodoro={statePomodoro} runTimer={runTimer} getTime={getTime}/>
+        <StateButton text='Short Break'  statePomodoro={statePomodoro} runTimer={runTimer} getTime={getTime}/>
+        <StateButton text='Long Break'  statePomodoro={statePomodoro} runTimer={runTimer} getTime={getTime}/>
+      </div>
+      
+
+      <TimerWindow stateTimer={stateTimer} runTimer={runTimer} next={next} time={time} setTime={setTime}/>
+      <div style={{...Container, fontSize: '1.25rem',}}>Count cycle: {getCountCycle()}</div>
+      <div style={Container}>
+        <ButtonTimer onClick={handleClick} state={stateTimer} text={['START', 'STOP']}/>
+        <NextButton state={time != setting.TimerSetting.timeCycle[statePomodoro]} next={next}/>
+      </div>
+      <RestartButton onClick={restart} state={time != setting.TimerSetting.timeCycle[statePomodoro]} text={'RESTART'}/>
 
 
-    </>
+    </div>
   )
 }
 

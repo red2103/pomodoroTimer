@@ -1,10 +1,11 @@
-const styleContainer = {
-    margin: 'auto',
+const Container = {
     maxWidth: '1096px',
     padding: '0px 67px',
+
+    margin: 'auto',
     display: 'flex',
     justifyContent: 'center',
 
 }
 
-export default styleContainer
+export default Container

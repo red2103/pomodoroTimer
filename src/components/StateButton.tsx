@@ -21,7 +21,7 @@ const StateButton: React.FC<StateButtonProps> = ({text, statePomodoro, runTimer,
 
   function style() {
     if (text == statePomodoro) {
-        return ButtonTimerActiveUI
+        return ButtonTimerActiveUI 
     }
     else {
         return ButtonTimerUI
@@ -31,9 +31,10 @@ const StateButton: React.FC<StateButtonProps> = ({text, statePomodoro, runTimer,
   
   return (
     <>
-    <button onClick={() => changeState()} style={style()}>{text}</button>
+<button onClick={() => changeState()} style={style()}>{text}</button>
     </>
   );
 }
 
 export default StateButton
+

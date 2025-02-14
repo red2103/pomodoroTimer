@@ -1,12 +1,13 @@
-import styleContainer from './ContainerUI'
+import styleContainer from './Container'
 
 
 
 const headerUI = {
     ...styleContainer,
+    display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: '10px 0px 10px 0px'
+    marginTop: '10px',
+    marginBottom: '10px',
 } 
 
 

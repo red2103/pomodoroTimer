@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ButtonTimerActiveUI from './UI/ButtonTimerActiveUI';
-import styleContainer from './UI/ContainerUI';
+import Container from './UI/Container';
 
 interface RestartButtonProps {
   onClick: () => void;
@@ -15,7 +15,7 @@ const RestartButton: React.FC<RestartButtonProps> = ({ onClick, state, text }) =
 
   return (
     <>{state ? 
-    <div style={styleContainer }>
+    <div style={Container }>
       <button style={ButtonTimerActiveUI} onClick={onClick}>
         {text}
       </button>
