@@ -56,7 +56,7 @@ const Option: React.FC<OptionProps> = ({ setting, viewOption, view, setTime }) =
                     }}> 
                         <img style={{
                             width: '40px',
-                        }} src="../src/assets/close.svg" /> 
+                        }} src="../src/img/close.svg" /> 
                     </button>
 
                 </div>
